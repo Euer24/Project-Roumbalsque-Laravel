@@ -1,0 +1,6 @@
+Voer de volgende stappen uit wanneer je project geen css lijkt te hebben"
+
+1. composer require laravel/ui
+2. php artisan ui bootstrap --auth
+3. druk daarna de hele tijd Enter(no)
+4. npm install

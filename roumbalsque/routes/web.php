@@ -27,9 +27,16 @@ Route::get('/menu', [MenuController::class, 'index'])->name('menu');
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-Route::get('/reserveren', [ReserverenController::class, 'index'])->name('reserveren');
-Route::get('/reserveren', [ReserverenController::class, 'showReservationForm'])->name('reserveren');
-Route::post('/reserveren',[ReserverenController::class, 'storeReservation']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/reserveren', [ReserverenController::class, 'index'])->name('reserveren');
+    Route::get('/reserveren', [ReserverenController::class, 'showReservationForm'])->name('reserveren');
+    Route::post('/reserveren',[ReserverenController::class, 'storeReservation']);
+    
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
